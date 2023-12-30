@@ -56,5 +56,7 @@ public abstract class Exam{
         System.out.println("Incorrect: " + getIncorrect());
         System.out.println("Unanswered: " + getUnanswered());
         System.out.println("Score: " + getScore());
+
+        ExamSaver.getInstance().saveExam(this);
     }
 }

@@ -4,33 +4,33 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        List<Question> questions = new ArrayList<>();
-        Scanner scanner = new Scanner(System.in);
+        while(true){
+            ExamSaver es = ExamSaver.getInstance();
+            es.checkAndCreateFolder();
 
-        System.out.println("How many questions would you like to answer?");
-        int numQuestions = scanner.nextInt();
+            System.out.println("Type [start] to proceed , [exit] to exit the program" +
+                    ", [options] to see the options");
+            Scanner input = new Scanner(System.in);
+            String choice = input.nextLine();
+            choice = choice.toLowerCase();
 
-        for (int i = 0; i < numQuestions; i++) {
-            int questionType = (int) (Math.random() * 4);
-            switch (questionType) {
-                case 0:
-                    questions.add(new AdditionQuestion());
-                    break;
-                case 1:
-                    questions.add(new SubtractionQuestion());
-                    break;
-                case 2:
-                    questions.add(new MultiplicationQuestion());
-                    break;
-                case 3:
-                    questions.add(new DivisionQuestion());
-                    break;
+            if(choice.equals("exit")){
+                System.out.println("Exiting program...");
+                break;
             }
+            else if(choice.equals("options")){
+                FeatureFactory ff = FeatureFactory.getInstance();
+                ff.showFeatureChoice();
+                continue;
+            }
+            else if(!choice.equals("start") && !choice.equals("options")){
+                System.out.println("Invalid input");
+                continue;
+            }
+
+            ExamFactory ef = ExamFactory.getInstance();
+            Exam e = ef.getExamChoice();
+            e.runExam();
         }
-
-        Exam exam = ExamFactory.getInstance().getExam();
-        exam.setQuestions(questions);
-        exam.runExam();
-
     }
 }

@@ -1,5 +1,5 @@
 public abstract class Question {
-    double answer;
+    public double answer;
     double givenAnswer;
     public boolean isCorrect() {
         try{
