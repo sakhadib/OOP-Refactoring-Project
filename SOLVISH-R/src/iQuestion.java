@@ -8,9 +8,5 @@ public interface iQuestion {
 
     void checkAnswer(String givenAnswer);
 
-    String getQuestion();
-    String getOptionA();
-    String getOptionB();
-    String getOptionC();
-    String getOptionD();
+    void show();
 }

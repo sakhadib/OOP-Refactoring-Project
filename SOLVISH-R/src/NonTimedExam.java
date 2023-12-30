@@ -59,17 +59,7 @@ public class NonTimedExam implements iExam{
     public void runExam() {
         Scanner input = new Scanner(System.in);
         for (iQuestion question : questions) {
-            String Question = question.getQuestion();
-            String OptionA = question.getOptionA();
-            String OptionB = question.getOptionB();
-            String OptionC = question.getOptionC();
-            String OptionD = question.getOptionD();
-
-            System.out.println(Question);
-            System.out.println("A. " + OptionA);
-            System.out.println("B. " + OptionB);
-            System.out.println("C. " + OptionC);
-            System.out.println("D. " + OptionD);
+            question.show();
 
             System.out.println("Write your answer: ");
             String answer = input.nextLine();

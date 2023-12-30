@@ -65,11 +65,7 @@ public class TimedExam implements iExam{
         Scanner input = new Scanner(System.in);
 
         for (iQuestion question : questions) {
-            System.out.println(question.getQuestion());
-            System.out.println("A. " + question.getOptionA());
-            System.out.println("B. " + question.getOptionB());
-            System.out.println("C. " + question.getOptionC());
-            System.out.println("D. " + question.getOptionD());
+            question.show();
             System.out.println("Enter your answer: ");
 
             Future<String> future = executor.submit(() -> input.nextLine());
