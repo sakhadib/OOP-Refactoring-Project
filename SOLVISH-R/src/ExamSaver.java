@@ -7,11 +7,31 @@ import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * The ExamSaver class is responsible for saving exam results, showing exam history, and deleting exam history records.
+ * It follows the Singleton pattern to ensure only one instance is created.
+ * The class uses file operations to manage exam history data.
+ *
+ * @author Adib Sakhawat
+ * @version 1.0
+ */
 public class ExamSaver {
 
+    /**
+     * The singleton instance of the ExamSaver.
+     */
     private static ExamSaver instance;
+
+    /**
+     * Private constructor to enforce the singleton pattern.
+     */
     private ExamSaver() {}
 
+    /**
+     * Gets the singleton instance of the ExamSaver.
+     *
+     * @return The singleton instance of the ExamSaver.
+     */
     public static ExamSaver getInstance() {
         if (instance == null) {
             instance = new ExamSaver();
@@ -19,10 +39,24 @@ public class ExamSaver {
         return instance;
     }
 
+    /**
+     * The drive where exam history data is stored.
+     */
     public final String drive = "C:\\";
+
+    /**
+     * The folder where exam history data is stored.
+     */
     public final String folder = "solvishR\\";
+
+    /**
+     * The file where exam history data is stored.
+     */
     public final String file = "exam.txt";
 
+    /**
+     * Checks and creates the folder and file for storing exam history data.
+     */
     public void checkAndCreateFolder() {
         Path folderPath = Paths.get(this.drive + this.folder);
         try {
@@ -39,18 +73,22 @@ public class ExamSaver {
         }
     }
 
-
-    public void saveExam(Exam e){
+    /**
+     * Saves exam results to the exam history file.
+     *
+     * @param e The exam whose results need to be saved.
+     */
+    public void saveExam(Exam e) {
         String examType = e.getClass().getSimpleName();
         String correct = String.valueOf(e.getCorrect());
         String wrong = String.valueOf(e.getIncorrect());
         String skip = String.valueOf(e.getUnanswered());
         String score = String.valueOf(e.getScore());
 
-        String thisexam = examType + "," + correct + "," + wrong + "," + skip + "," + score;
+        String thisExam = examType + "," + correct + "," + wrong + "," + skip + "," + score;
 
         Path filePath = Paths.get(this.drive + this.folder + this.file);
-        List<String> lines = Arrays.asList(thisexam);
+        List<String> lines = Arrays.asList(thisExam);
 
         try {
             Files.write(filePath, lines, StandardOpenOption.APPEND);
@@ -59,14 +97,17 @@ public class ExamSaver {
         }
     }
 
-    public void showHistory(){
+    /**
+     * Shows the exam history by reading and displaying data from the exam history file.
+     */
+    public void showHistory() {
         Path filePath = Paths.get(this.drive + this.folder + this.file);
         try {
             List<String> lines = Files.readAllLines(filePath);
             System.out.println("Exam History: ");
             System.out.println("The Exam Type\t|\tCr\t|\tWr\t|\tSk\t|\tScore");
             System.out.println("---------------------------------------------------------------");
-            for(String line : lines){
+            for (String line : lines) {
                 String[] exam = line.split(",");
                 if (exam.length < 5) {
                     continue;
@@ -84,8 +125,10 @@ public class ExamSaver {
         }
     }
 
-
-    public void deleteHistory(){
+    /**
+     * Deletes the exam history file.
+     */
+    public void deleteHistory() {
         Path filePath = Paths.get(this.drive + this.folder + this.file);
         try {
             Files.delete(filePath);
@@ -94,7 +137,4 @@ public class ExamSaver {
             e.printStackTrace();
         }
     }
-
-
-
 }
