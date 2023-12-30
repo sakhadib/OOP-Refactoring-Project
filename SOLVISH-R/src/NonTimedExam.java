@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,6 +13,7 @@ public class NonTimedExam implements iExam{
 
     public NonTimedExam(int examID) {
         this.examID = examID;
+        this.questions = new ArrayList<iQuestion>();
     }
 
     public void addQuestion(iQuestion question) {
