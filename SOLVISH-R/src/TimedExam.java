@@ -4,18 +4,15 @@ import java.util.Scanner;
 import java.util.concurrent.*;
 
 public class TimedExam implements iExam{
-    int examID;
     List<iQuestion> questions;
     int timeLimit;
 
-    public TimedExam(int examID, List<iQuestion> questions, int timeLimit) {
-        this.examID = examID;
+    public TimedExam(List<iQuestion> questions, int timeLimit) {
         this.questions = questions;
         this.timeLimit = timeLimit;
     }
 
-    public TimedExam(int examID, int timeLimit) {
-        this.examID = examID;
+    public TimedExam(int timeLimit) {
         this.timeLimit = timeLimit;
         this.questions = new ArrayList<iQuestion>();
     }

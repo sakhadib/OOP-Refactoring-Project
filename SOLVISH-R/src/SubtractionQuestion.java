@@ -25,7 +25,7 @@ public class SubtractionQuestion implements iQuestion{
     @Override
     public boolean isCorrect() {
         try{
-            if(this.answer - this.givenAnswer < 0.01) {
+            if(this.answer - this.givenAnswer < 0.01 && this.answer - this.givenAnswer > -0.01) {
                 return true;
             } else {
                 return false;

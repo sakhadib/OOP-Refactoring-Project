@@ -3,16 +3,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class NonTimedExam implements iExam{
-    int examID;
     List<iQuestion> questions;
 
-    public NonTimedExam(int examID, List<iQuestion> questions) {
-        this.examID = examID;
+    public NonTimedExam(List<iQuestion> questions) {
         this.questions = questions;
     }
 
-    public NonTimedExam(int examID) {
-        this.examID = examID;
+    public NonTimedExam() {
         this.questions = new ArrayList<iQuestion>();
     }
 
