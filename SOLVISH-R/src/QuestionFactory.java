@@ -8,7 +8,7 @@ public class QuestionFactory {
         return instance;
     }
 
-    public iQuestion getQuestion(String type) {
+    public Question getQuestion(String type) {
         if(type.equals("addition")) {
             return new AdditionQuestion();
         } else if(type.equals("subtraction")) {
