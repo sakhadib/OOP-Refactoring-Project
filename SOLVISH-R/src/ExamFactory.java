@@ -8,11 +8,11 @@ public class ExamFactory {
         return instance;
     }
 
-    public iExam getExam() {
+    public Exam getExam() {
         return new NonTimedExam();
     }
 
-    public iExam getExam(int timeLimit) {
+    public Exam getExam(int timeLimit) {
         try{
             return new TimedExam(timeLimit);
         }

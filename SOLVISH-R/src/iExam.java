@@ -7,4 +7,6 @@ public interface iExam {
 
     void addQuestion(iQuestion question);
 
+    void showResults();
+
 }
