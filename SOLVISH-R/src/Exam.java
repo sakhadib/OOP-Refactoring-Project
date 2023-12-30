@@ -1,15 +1,19 @@
 import java.util.List;
 
 public abstract class Exam{
-    List<iQuestion> questions;
+    List<Question> questions;
 
-    public void addQuestion(iQuestion question) {
+    public void addQuestion(Question question) {
         questions.add(question);
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
     }
 
     public int getCorrect() {
         int correct = 0;
-        for (iQuestion question : questions) {
+        for (Question question : questions) {
             if (question.isCorrect()) {
                 correct++;
             }
@@ -19,8 +23,8 @@ public abstract class Exam{
 
     public int getIncorrect() {
         int incorrect = 0;
-        for (iQuestion question : questions) {
-            if (!question.isCorrect()) {
+        for (Question question : questions) {
+            if (!question.isCorrect() && question.isAnswered()) {
                 incorrect++;
             }
         }
@@ -29,7 +33,7 @@ public abstract class Exam{
 
     public int getUnanswered() {
         int unanswered = 0;
-        for (iQuestion question : questions) {
+        for (Question question : questions) {
             if (!question.isAnswered()) {
                 unanswered++;
             }

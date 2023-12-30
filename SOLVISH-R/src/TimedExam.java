@@ -6,14 +6,14 @@ import java.util.concurrent.*;
 public class TimedExam extends Exam{
     int timeLimit;
 
-    public TimedExam(List<iQuestion> questions, int timeLimit) {
+    public TimedExam(List<Question> questions, int timeLimit) {
         this.questions = questions;
         this.timeLimit = timeLimit;
     }
 
     public TimedExam(int timeLimit) {
         this.timeLimit = timeLimit;
-        this.questions = new ArrayList<iQuestion>();
+        this.questions = new ArrayList<Question>();
     }
 
     @Override
@@ -21,7 +21,7 @@ public class TimedExam extends Exam{
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Scanner input = new Scanner(System.in);
 
-        for (iQuestion question : questions) {
+        for (Question question : questions) {
             question.show();
             System.out.println("Enter your answer: ");
 
